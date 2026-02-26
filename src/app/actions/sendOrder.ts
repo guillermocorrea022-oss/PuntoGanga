@@ -7,42 +7,42 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY || 're_123');
 
 interface OrderData {
-    customer: {
-        nombre: string;
-        apellido: string;
-        telefono: string;
-        direccion: string;
-        pueblo: string;
-        observaciones?: string;
-    };
-    items: any[];
-    total: number;
+  customer: {
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    direccion: string;
+    pueblo: string;
+    observaciones?: string;
+  };
+  items: any[];
+  total: number;
 }
 
 export async function sendOrder(data: OrderData) {
-    const { customer, items, total } = data;
-    const date = new Date().toLocaleString('es-UY', { timeZone: 'America/Montevideo' });
+  const { customer, items, total } = data;
+  const date = new Date().toLocaleString('es-UY', { timeZone: 'America/Montevideo' });
 
-    // If no API key is provided, we simulate success for demonstration
-    if (!process.env.RESEND_API_KEY) {
-        console.log('--- MOCK EMAIL SENT ---');
-        console.log('To: admin@puntoganga.com.uy');
-        console.log('From: pedidos@puntoganga.com.uy');
-        console.log('Subject: Nuevo Pedido Mayorista - ' + customer.nombre + ' ' + customer.apellido);
-        console.log('Body:', {
-            customer,
-            items: items.length,
-            total,
-            date
-        });
+  // If no API key is provided, we simulate success for demonstration
+  if (!process.env.RESEND_API_KEY) {
+    console.log('--- MOCK EMAIL SENT ---');
+    console.log('To: Guillermo_correa112@hotmail.com, juliomcorrea@vera.com.uy');
+    console.log('From: pedidos@puntoganga.com.uy');
+    console.log('Subject: Nuevo Pedido Mayorista - ' + customer.nombre + ' ' + customer.apellido);
+    console.log('Body:', {
+      customer,
+      items: items.length,
+      total,
+      date
+    });
 
-        // Artificial delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        return { success: true };
-    }
+    // Artificial delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return { success: true };
+  }
 
-    try {
-        const htmlBody = `
+  try {
+    const htmlBody = `
       <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
         <h1 style="color: #5cb85c; border-bottom: 2px solid #5cb85c; padding-bottom: 10px;">Nuevo Pedido Mayorista</h1>
         <p><strong>Fecha:</strong> ${date}</p>
@@ -86,19 +86,19 @@ export async function sendOrder(data: OrderData) {
       </div>
     `;
 
-        const response = await resend.emails.send({
-            from: 'Pedidos Punto Ganga <onboarding@resend.dev>', // Should use a verified domain in production
-            to: ['guillermo.dev@example.com'], // The owner's email
-            subject: `🛍️ Pedido Mayorista: ${customer.pueblo} - ${customer.nombre} ${customer.apellido}`,
-            html: htmlBody,
-        });
+    const response = await resend.emails.send({
+      from: 'Pedidos Punto Ganga <onboarding@resend.dev>', // Should use a verified domain in production
+      to: ['Guillermo_correa112@hotmail.com', 'juliomcorrea@vera.com.uy'],
+      subject: `🛍️ Pedido Mayorista: ${customer.pueblo} - ${customer.nombre} ${customer.apellido}`,
+      html: htmlBody,
+    });
 
-        if (response.error) {
-            return { success: false, message: response.error.message };
-        }
-
-        return { success: true };
-    } catch (error: any) {
-        return { success: false, message: error.message };
+    if (response.error) {
+      return { success: false, message: response.error.message };
     }
+
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, message: error.message };
+  }
 }
