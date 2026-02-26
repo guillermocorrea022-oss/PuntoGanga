@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/Header";
 import { Suspense } from "react";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <main className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
             {children}
           </main>
+          <WhatsAppButton />
           <footer style={{ padding: '2rem', textAlign: 'center', backgroundColor: '#222', color: '#fff', marginTop: 'auto' }}>
             <p>&copy; {new Date().getFullYear()} Punto Ganga - Paysandú, Uruguay</p>
           </footer>

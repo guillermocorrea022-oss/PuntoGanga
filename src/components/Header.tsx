@@ -55,7 +55,7 @@ export default function Header() {
                     </div>
                 </div>
                 <div className={styles.topBanner}>
-                    Los mejores precios mayoristas garantizados
+                    ENVÍOS GRATIS A TODO URUGUAY A PARTIR DE $3.000 PESOS
                 </div>
             </header>
 

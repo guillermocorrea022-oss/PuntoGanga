@@ -26,7 +26,7 @@ function HomeContent() {
           <h1>Punto Ganga Mayorista</h1>
           <p>Los mejores precios mayoristas para tu negocio</p>
           <div className={styles.heroBadges}>
-            <span>🚚 Envíos gratis</span>
+            <span>🚚 Envíos gratis dentro de Paysandú</span>
             <span>⚡ Pedidos rápidos</span>
           </div>
         </div>
