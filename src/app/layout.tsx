@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/Header";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
         <CartProvider>
-          <Header />
+          <Suspense fallback={<div style={{ height: '70px', background: '#fff' }}></div>}>
+            <Header />
+          </Suspense>
           <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
             {children}
           </main>

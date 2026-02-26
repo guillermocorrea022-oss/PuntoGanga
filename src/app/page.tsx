@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { products, categories, Category } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 import styles from './page.module.css';
 
-export default function Home() {
+function HomeContent() {
   const [selectedCategory, setSelectedCategory] = useState<Category | 'Todos'>('Todos');
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('q')?.toLowerCase() || '';
@@ -71,5 +71,13 @@ export default function Home() {
         )}
       </section>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Cargando catálogo...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
