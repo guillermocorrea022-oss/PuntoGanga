@@ -60,6 +60,20 @@ export default function Header() {
             </header>
 
             <CartDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+
+            <div className={styles.bottomNav}>
+                <button className={styles.bottomNavItem} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <span className={styles.bottomNavIcon}>🏠</span>
+                    <span className={styles.bottomNavText}>Inicio</span>
+                </button>
+                <button className={styles.bottomNavItem} onClick={() => setIsDrawerOpen(true)}>
+                    <div className={styles.bottomNavIconWrapper}>
+                        <span className={styles.bottomNavIcon}>🛒</span>
+                        {cartCount > 0 && <span className={styles.bottomNavBadge}>{cartCount}</span>}
+                    </div>
+                    <span className={styles.bottomNavText}>Carrito</span>
+                </button>
+            </div>
         </>
     );
 }

@@ -24,7 +24,7 @@ export default function RootLayout({
           <Suspense fallback={<div style={{ height: '70px', background: '#fff' }}></div>}>
             <Header />
           </Suspense>
-          <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+          <main className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
             {children}
           </main>
           <footer style={{ padding: '2rem', textAlign: 'center', backgroundColor: '#222', color: '#fff', marginTop: 'auto' }}>

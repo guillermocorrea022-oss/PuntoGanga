@@ -139,3 +139,49 @@
         font-size: 1rem;
     }
 }
+
+@media (max-width: 480px) {
+    .content {
+        padding: 0.5rem;
+    }
+
+    .title {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .price {
+        font-size: 1.1rem;
+    }
+
+    .description {
+        display: none;
+    }
+
+    .category {
+        font-size: 0.65rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .quantityPicker {
+        padding: 0.2rem 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    .quantityPicker label {
+        display: none;
+    }
+
+    .quantityPicker input {
+        text-align: center;
+        font-size: 1rem;
+        padding: 0.2rem;
+    }
+
+    .addButton {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
