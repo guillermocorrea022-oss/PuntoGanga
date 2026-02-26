@@ -1,4 +1,4 @@
-export type Category = 'Bazar' | 'Juguetes' | 'Camping y Pesca' | 'Herramientas' | 'Muebles y Electrodomesticos';
+export type Category = 'Bazar' | 'Juguetes' | 'Camping y Pesca' | 'Herramientas' | 'Muebles y Electrodomesticos' | 'Cocina' | 'Baño' | 'Hogar' | 'Higiene' | 'Bebés' | 'Botellería';
 
 export interface Product {
     id: string;
@@ -1129,5 +1129,11 @@ export const categories: Category[] = [
     'Juguetes',
     'Camping y Pesca',
     'Herramientas',
-    'Muebles y Electrodomesticos'
+    'Muebles y Electrodomesticos',
+    'Cocina',
+    'Baño',
+    'Hogar',
+    'Higiene',
+    'Bebés',
+    'Botellería'
 ];
