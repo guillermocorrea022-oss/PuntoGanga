@@ -88,7 +88,7 @@ export async function sendOrder(data: OrderData) {
 
     const response = await resend.emails.send({
       from: 'Pedidos Punto Ganga <onboarding@resend.dev>', // Should use a verified domain in production
-      to: ['Guillermo_correa112@hotmail.com', 'juliomcorrea@vera.com.uy'],
+      to: ['guillermo.correa022@gmail.com'], // Resend Free Tier restriction: can only send to verified account email
       subject: `🛍️ Pedido Mayorista: ${customer.pueblo} - ${customer.nombre} ${customer.apellido}`,
       html: htmlBody,
     });
