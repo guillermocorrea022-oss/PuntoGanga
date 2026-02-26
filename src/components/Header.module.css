@@ -1,0 +1,106 @@
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headerContent {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-weight: 400;
+}
+
+.searchBar {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.searchBar input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.searchBar button {
+    background: #333;
+    color: white;
+    padding: 0 1rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cartInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cartTotal {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cartButton {
+    position: relative;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.topBanner {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 0.25rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        display: none;
+        /* Hide search on mobile to save space, or make it interactive */
+    }
+
+    .cartTotal {
+        display: none;
+    }
+}
