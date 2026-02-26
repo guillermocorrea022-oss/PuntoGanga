@@ -16,11 +16,13 @@ interface OrderData {
     observaciones?: string;
   };
   items: any[];
+  subTotal?: number;
+  discount?: number;
   total: number;
 }
 
 export async function sendOrder(data: OrderData) {
-  const { customer, items, total } = data;
+  const { customer, items, subTotal, discount, total } = data;
   const date = new Date().toLocaleString('es-UY', { timeZone: 'America/Montevideo' });
 
   // If no API key is provided, we simulate success for demonstration
@@ -76,8 +78,14 @@ export async function sendOrder(data: OrderData) {
           </tbody>
         </table>
         
-        <div style="margin-top: 20px; text-align: right; font-size: 1.5rem; font-weight: bold; color: #222;">
-          Total Final: <span style="color: #5cb85c;">$${total.toLocaleString()}</span>
+        <div style="margin-top: 20px; text-align: right; color: #555;">
+          ${discount && discount > 0 ? `
+            <div style="font-size: 1.1rem; margin-bottom: 5px;">Subtotal: $${subTotal?.toLocaleString()}</div>
+            <div style="font-size: 1.1rem; margin-bottom: 10px; color: #d9534f; font-weight: bold;">Descuento (20%): -$${discount.toLocaleString()}</div>
+          ` : ''}
+          <div style="font-size: 1.5rem; font-weight: bold; color: #222;">
+            Total Final: <span style="color: #5cb85c;">$${total.toLocaleString()}</span>
+          </div>
         </div>
         
         <p style="margin-top: 30px; font-size: 0.8rem; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">

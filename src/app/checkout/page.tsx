@@ -7,7 +7,7 @@ import styles from './Checkout.module.css';
 import Link from 'next/link';
 
 export default function CheckoutPage() {
-    const { cart, cartTotal, clearCart } = useCart();
+    const { cart, cartSubTotal, cartDiscount, cartTotal, clearCart } = useCart();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState('');
@@ -36,6 +36,8 @@ export default function CheckoutPage() {
             const result = await sendOrder({
                 customer: formData,
                 items: cart,
+                subTotal: cartSubTotal,
+                discount: cartDiscount,
                 total: cartTotal
             });
 
@@ -129,6 +131,18 @@ export default function CheckoutPage() {
                                 </li>
                             ))}
                         </ul>
+                        {cartDiscount > 0 && (
+                            <div className={styles.summaryDiscountSection}>
+                                <div className={styles.summarySubtotal}>
+                                    <span>Subtotal:</span>
+                                    <span>${cartSubTotal.toLocaleString()}</span>
+                                </div>
+                                <div className={styles.summaryDiscount}>
+                                    <span>Descuento (20%):</span>
+                                    <span>-${cartDiscount.toLocaleString()}</span>
+                                </div>
+                            </div>
+                        )}
                         <div className={styles.summaryTotal}>
                             <span>Total a pagar:</span>
                             <span>${cartTotal.toLocaleString()}</span>

@@ -210,6 +210,26 @@
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.02);
 }
 
+.subtotalRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
+.discountRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
 .totalRow {
     display: flex;
     justify-content: space-between;
@@ -218,6 +238,8 @@
     font-weight: 900;
     margin-bottom: 0.75rem;
     color: var(--secondary-color);
+    border-top: 1px dashed #ddd;
+    padding-top: 0.75rem;
 }
 
 .totalAmount {

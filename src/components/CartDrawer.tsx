@@ -6,7 +6,7 @@ import styles from './CartDrawer.module.css';
 import Link from 'next/link';
 
 export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-    const { cart, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
+    const { cart, removeFromCart, updateQuantity, cartSubTotal, cartDiscount, cartTotal, cartCount } = useCart();
 
     if (!isOpen) return null;
 
@@ -50,6 +50,18 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
 
                 {cart.length > 0 && (
                     <div className={styles.footer}>
+                        {cartDiscount > 0 && (
+                            <>
+                                <div className={styles.subtotalRow}>
+                                    <span>Subtotal:</span>
+                                    <span>${cartSubTotal.toLocaleString()}</span>
+                                </div>
+                                <div className={styles.discountRow}>
+                                    <span>Descuento (20%):</span>
+                                    <span>-${cartDiscount.toLocaleString()}</span>
+                                </div>
+                            </>
+                        )}
                         <div className={styles.totalRow}>
                             <span>Total General:</span>
                             <span className={styles.totalAmount}>${cartTotal.toLocaleString()}</span>

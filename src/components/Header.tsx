@@ -1,11 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import styles from './Header.module.css';
 import CartDrawer from './CartDrawer';
+
+const BANNERS = [
+    "🚚 ENVÍOS GRATIS A TODO URUGUAY A PARTIR DE $3.000 PESOS",
+    "💥 20% DE DESCUENTO EN COMPRAS MAYORES A $5.000"
+];
 
 export default function Header() {
     const { cartCount, cartTotal } = useCart();
@@ -13,6 +18,14 @@ export default function Header() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [searchValue, setSearchValue] = useState(searchParams.get('q') || '');
+    const [bannerIndex, setBannerIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBannerIndex((prev) => (prev + 1) % BANNERS.length);
+        }, 4000); // Rotate every 4 seconds
+        return () => clearInterval(interval);
+    }, []);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,7 +68,9 @@ export default function Header() {
                     </div>
                 </div>
                 <div className={styles.topBanner}>
-                    ENVÍOS GRATIS A TODO URUGUAY A PARTIR DE $3.000 PESOS
+                    <div key={bannerIndex} className={styles.bannerText}>
+                        {BANNERS[bannerIndex]}
+                    </div>
                 </div>
             </header>
 
